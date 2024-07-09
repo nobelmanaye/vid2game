@@ -3,7 +3,6 @@ from doctest import ELLIPSIS_MARKER
 import pygame
 import os
 import math
-import random
 from vector2D import Vector2
 from physics import Distance,rad
 from projectile import Projectile
@@ -13,6 +12,7 @@ from Panel import panel
 from character import Character
 
 from drawable import drawable
+import secrets
 
 Bonus = {"Cannon":10, "Pikeman":13,"Building":-8,"Cavalry":5,"Rifleman":10}
 class Rifleman(Character):
@@ -319,7 +319,7 @@ class Rifleman(Character):
                      channel = pygame.mixer.find_channel()
                      
                      
-                     delay = random.randint(1,3)
+                     delay = secrets.SystemRandom().randint(1,3)
                      if channel is not None and channel.get_busy() != True and delay ==2:
                         channel.set_volume(0.2)
                         channel.play(self.cocksound)
@@ -327,7 +327,7 @@ class Rifleman(Character):
                   
             if self.cursor in(5*frame,6*frame,7*frame):
                      
-                      delay = random.randint(1,5)
+                      delay = secrets.SystemRandom().randint(1,5)
                       if delay == 4:
 
                         self.cursor -= round(0.75*frame)
